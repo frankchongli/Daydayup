@@ -16,7 +16,7 @@ We are now using gradle for our builds, so this should now be as simple as impor
 7. In the following dialog, **Gradle home** locate the path for **gradle** and click **OK**. 在接下来的对话窗口中，将**Gradle home**（Gradle根目录）指向通往 **gradle** 的路径，并点击 **OK（确定）**。
 
 You should now have a cleanly building Signal project in Android Studio! Make sure to check out the [Code Style Guidelines](https://github.com/WhisperSystems/Signal-Android/wiki/Code-Style-Guidelines) before getting started.
-现在，您的安卓工作室内，应该设置好了一个编译得干干净净的Signal项目！请务必在开始之前去查看[Code Style Guidelines](https://github.com/WhisperSystems/Signal-Android/wiki/Code-Style-Guidelines)（代码风格指南）。
+现在，您的安卓工作室内，应该设置好了一个编译得干干净净的Signal项目！请务必在开始之前去查看 [Code Style Guidelines](https://github.com/WhisperSystems/Signal-Android/wiki/Code-Style-Guidelines)（代码风格指南）。
 
 -------------------- Finished work 成品 ------
 ## 设置Gradle环境
@@ -31,6 +31,6 @@ You should now have a cleanly building Signal project in Android Studio! Make su
 6. 找到已克隆好的Signal项目，展开它，选择 **build.gradle** 文件，并点击 **OK**（确定）。
 7. 在接下来的对话窗口中，将**Gradle home**（Gradle根目录）指向通往 **gradle** 的路径，并点击 **OK（确定）**。
 
-现在，您的安卓工作室内，应该设置好了一个编译得干干净净的Signal项目！请务必在开始之前去查看[Code Style Guidelines](https://github.com/WhisperSystems/Signal-Android/wiki/Code-Style-Guidelines)（代码风格指南）。
+现在，您的安卓工作室内，应该设置好了一个编译得干干净净的Signal项目！请务必在开始之前去查看 [Code Style Guidelines](https://github.com/WhisperSystems/Signal-Android/wiki/Code-Style-Guidelines)（代码风格指南）。
 
 -------------------------
