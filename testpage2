@@ -117,7 +117,7 @@ gradlew.bat clean
 
 
 
-Finished 成品交付
+Finished/Deliverable 成品交付
 -----------------------------
 
 _参见 https://github.com/WhisperSystems/Signal-Android/blob/master/BUILDING.md_
@@ -154,6 +154,7 @@ git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
 # 作为一名开发员
 # 您能使用您的用户名和GIT协议进行克隆
 # git clone git@github.com:Username/Signal-Android.git Signal-Android
+# 其中，Username是您在github的用户名。
 
 cd Signal-Android
 
@@ -194,7 +195,7 @@ cd Signal-Android
 
 # 当您看到了 "Could not resolve all dependencies for configuration ':_debugCompile'.（无法解决针对配置':_debugCompile'的所有依赖库） 
 #   > Could not find com.android.support:support-v4:19.0.1."（无法找到 com.android.support:support-v4:19.0.1。）
-# ... 这说明，您安装了不匹配的安卓SDK构建工具库。
+# ... 这说明，您安装了不匹配的安卓SDK构建工具（Android SDK Build Tools）库。
 # 参见 http://developer.android.com/tools/support-library/setup.html，其中介绍了安装那个库的多种方法， 
 # 例如，您可以运行 "<path-to-your>/sdk/tools/android sdk"，其中<path-to-your>是到达您的sdk的路径。
 # 并且添加上在错误信息中提及的版本，具体到这里，就是：19.0.1
@@ -202,11 +203,11 @@ cd Signal-Android
 # 再次构建
 ./gradlew build
 
-# 如果您看到了 "BUILD SUCCESSFUL"（构建成功），那么，请在如下目录找到您的apk文件
+# 如果您看到了 "BUILD SUCCESSFUL"（构建成功），那么，请在如下目录中找到您的apk文件
 /work/Signal-Android/build/outputs/apk/Signal-Android-debug-unaligned.apk 以及
 /work/Signal-Android/build/outputs/apk/Signal-Android-release-unsigned.apk
 
-# 如果您期望安装发布构建，那么它是需要签署的：https://developer.android.com/tools/publishing/app-signing.html
+# 如果您期望安装发布构建，那么它是需要签署的；参见：https://developer.android.com/tools/publishing/app-signing.html
 
 # 一个快速应急的创建方法是：
 
