@@ -1,0 +1,236 @@
+Original Content 原文
+-----------------------
+_See also https://github.com/WhisperSystems/Signal-Android/blob/master/BUILDING.md_
+
+_The following information concentrates on compiling on **LINUX** or **OS X** machines. If you can and want to contribute information how to compile on other platforms: you are welcome to add such infos._
+
+## Prerequisites
+* "Android SDK manager"
+* "Android Support Repository" - this need to be installed via the Android SDK manager
+* "Java Development Kit (JDK)" compiler for example openjdk-devel - JRE alone is not enough. At least version 7 of Java is required.
+
+## **LINUX** or **OS X**
+### Build Signal (for experts who have all the prerequisites)
+```
+# assuming your working directory is /work
+cd /work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+cd Signal-Android
+# execute Gradle
+./gradlew build
+# If you see "BUILD SUCCESSFUL" then fetch and install your apk
+/work/Signal-Android/build/outputs/apk/Signal-Android-debug-unaligned.apk
+# cleaning up
+./gradlew clean
+```
+
+
+### Build Signal (detailed, for newbies)
+```
+# assuming the project working directory is /work
+cd /work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+
+# as a developer
+# you would clone using the git protocol and your username
+# git clone git@github.com:Username/Signal-Android.git Signal-Android
+
+cd Signal-Android
+
+# install Gradle (if is not installed yet) and then execute Gradle
+./gradlew build
+
+# if you see an error message
+#
+# "SDK location not found. Define location with sdk.dir in the local.properties file
+# or with an ANDROID_HOME environment variable" ...
+#
+# ... then download and unzip the Android "ADT Bundle" or "SDK Tools only"
+# from http://developer.android.com/sdk/index.html
+#
+# ... create a file /work/Signal-Android/local.properties which points to the sdk subdirectory
+# which you unzipped in the previous step
+# sdk.dir=<path-to-your>/sdk
+
+# retry the build
+./gradlew build
+
+# when you see "Could not find com.android.support:support-v" ...
+# ... you have also forgotten to install the support library
+# see http://developer.android.com/tools/support-library/setup.html for different methods to install 
+# that library, for example you can run "<path-to-your>/sdk/tools/android sdk"
+
+# retry the build
+./gradlew build
+
+# when you see "Cannot find System Java Compiler ...." ...
+# ... you have also forgotten to install an JAVA compiler (a Java Runtime Environment JRE is not enough)
+# then install openjdk-devel for your distribution
+
+# retry the build
+./gradlew build
+
+# when you see "Could not resolve all dependencies for configuration ':_debugCompile'.
+#   > Could not find com.android.support:support-v4:19.0.1."
+# ... you have the wrong Android SDK Build Tools installed.
+# see http://developer.android.com/tools/support-library/setup.html for different methods to install 
+# that library, for example you can run "<path-to-your>/sdk/tools/android sdk"
+# and add the version mentioned in the error message, here: 19.0.1
+
+# retry the build
+./gradlew build
+
+# If you see "BUILD SUCCESSFUL" then locate your apks as
+/work/Signal-Android/build/outputs/apk/Signal-Android-debug-unaligned.apk and
+/work/Signal-Android/build/outputs/apk/Signal-Android-release-unsigned.apk
+
+# If you wish to install the release build, it needs to be signed: https://developer.android.com/tools/publishing/app-signing.html
+
+# A quick and dirty method is:
+
+cd build/outputs/apk
+keytool -genkey -v -keystore example.keystore -alias SomeAlias -keyalg RSA -keysize 4096
+jarsigner -verbose -keystore example.keystore Signal-Android-release-unsigned.apk SomeAlias
+
+# You can now use 'Signal-Android-release-unsigned.apk' and/or rename it to what you like.
+# cleaning up
+./gradlew clean
+```
+## **WINDOWS**
+### Build Signal (for experts who have all the prerequisites)
+```
+# assuming your working directory is c:\work
+cd c:\work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+cd Signal-Android
+# execute Gradle
+gradlew.bat build
+# If you see "BUILD SUCCESSFUL" then fetch and install your apk
+c:\work\Signal-Android\build\outputs\apk\Signal-website-debug-*.apk
+# cleaning up
+gradlew.bat clean
+```
+
+-----------------------------
+
+-----------------------------
+
+
+
+Finished 成品交付
+-----------------------------
+
+_参见 https://github.com/WhisperSystems/Signal-Android/blob/master/BUILDING.md_
+
+_下文专门介绍了在**LINUX**或**OS X**平台上的编译方法。如果您能够并且想要贡献关于如何在其它平台上进行编译的资料：我们非常欢迎您添加这些信息。_
+
+## 前提要求
+* "安卓SDK管理器"
+* "安卓支持库" - 其安装需要通过安卓SDK管理器完成。
+* "Java开发工具库(JDK)"编译器（比如针对openjdk-devel的）- 仅仅有JRE是不够用的。至少要求Java版本7。
+
+## **LINUX** 或 **OS X**
+### 构建Signal（面向已满足全部前提要求的专家级读者）
+```
+# 假设您的工作目录是 /work
+cd /work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+cd Signal-Android
+# 运行Gradle
+./gradlew build
+# 如果您看到了 "BUILD SUCCESSFUL"（构建成功），那么，请获取并安装您的apk文件
+/work/Signal-Android/build/outputs/apk/Signal-Android-debug-unaligned.apk
+# 清理干净
+./gradlew clean
+```
+
+
+### 构建Signal（很详细，面向新手读者）
+```
+# 假设项目的工作目录是 /work
+cd /work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+
+# 作为一名开发员
+# 您能使用您的用户名和GIT协议进行克隆
+# git clone git@github.com:Username/Signal-Android.git Signal-Android
+
+cd Signal-Android
+
+# 安装Gradle（如果还没有安装）然后运行Gradle
+./gradlew build
+
+# 如果您看到了如下错误信息
+#
+# "SDK location not found. Define location with sdk.dir in the local.properties file
+# or with an ANDROID_HOME environment variable" ...
+# （"SDK目录找不到。请在local.properties文件中通过sdk.dir来定义SDK的位置目录
+# 或者使用环境变量ANDROID_HOME来指明该目录" ...）
+#
+# ... 那么，下载并解压安卓的"ADT Bundle"（ADT Bundle文件束）或者"SDK Tools only"（仅仅SDK工具）
+# 下载网址是 http://developer.android.com/sdk/index.html
+#
+# ... 创建一个文件 /work/Signal-Android/local.properties ，让其指明到达sdk这个子目录的路径
+# 这个目录就是您刚才解压时获得的目录
+# sdk.dir=<path-to-your>/sdk，其中<path-to-your>是到达您的sdk的路径。
+
+# 再次构建
+./gradlew build
+
+# 当您看到了 "Could not find com.android.support:support-v"（无法找到 com.android.support:support-v）... 时， 
+# ... 这说明，您还忘记了安装支持库；
+# 参见 http://developer.android.com/tools/support-library/setup.html，其中介绍了安装那个库的多种方法， 
+# 例如，您可以运行 "<path-to-your>/sdk/tools/android sdk"，其中<path-to-your>是到达您的sdk的路径。
+
+# 再次构建
+./gradlew build
+
+# 当您看到了 "Cannot find System Java Compiler ...."（无法找到Java编译器）...时
+# ... 这说明，您又忘记了安装JAVA编译器（仅仅有Java运行时环境JRE是不够用的）
+# 那么，就请安装针对您的发布版本的 openjdk-devel
+
+# 再次构建
+./gradlew build
+
+# 当您看到了 "Could not resolve all dependencies for configuration ':_debugCompile'.（无法解决针对配置':_debugCompile'的所有依赖库） 
+#   > Could not find com.android.support:support-v4:19.0.1."（无法找到 com.android.support:support-v4:19.0.1。）
+# ... 这说明，您安装了不匹配的安卓SDK构建工具库。
+# 参见 http://developer.android.com/tools/support-library/setup.html，其中介绍了安装那个库的多种方法， 
+# 例如，您可以运行 "<path-to-your>/sdk/tools/android sdk"，其中<path-to-your>是到达您的sdk的路径。
+# 并且添加上在错误信息中提及的版本，具体到这里，就是：19.0.1
+
+# 再次构建
+./gradlew build
+
+# 如果您看到了 "BUILD SUCCESSFUL"（构建成功），那么，请在如下目录找到您的apk文件
+/work/Signal-Android/build/outputs/apk/Signal-Android-debug-unaligned.apk 以及
+/work/Signal-Android/build/outputs/apk/Signal-Android-release-unsigned.apk
+
+# 如果您期望安装发布构建，那么它是需要签署的：https://developer.android.com/tools/publishing/app-signing.html
+
+# 一个快速应急的创建方法是：
+
+cd build/outputs/apk
+keytool -genkey -v -keystore example.keystore -alias SomeAlias -keyalg RSA -keysize 4096
+jarsigner -verbose -keystore example.keystore Signal-Android-release-unsigned.apk SomeAlias
+
+# 于是，您现在能够使用 'Signal-Android-release-unsigned.apk' 和（或）把它随意重新命名。
+# 清理干净
+./gradlew clean
+```
+## **WINDOWS**
+### 构建Signal（针对已满足所有前提要求的专家级读者）
+```
+# 假定您的工作目录是 c:\work
+cd c:\work
+git clone https://github.com/WhisperSystems/Signal-Android.git Signal-Android
+cd Signal-Android
+# 运行Gradle
+gradlew.bat build
+# 如果您看到了 "BUILD SUCCESSFUL"（构建成功），那么，请获取并安装您的apk文件
+c:\work\Signal-Android\build\outputs\apk\Signal-website-debug-*.apk
+# 清理干净
+gradlew.bat clean
+```
+
+--------------------------------
